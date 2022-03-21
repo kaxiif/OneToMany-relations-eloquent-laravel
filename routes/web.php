@@ -34,3 +34,17 @@ Route::get('/read', function(){
     }
 
 });
+
+Route::get('/update', function(){
+    $user = User::findOrFail(1);
+    $user->posts()->whereId(1)->update(['title'=>'course','body'=>'Laravel PHP 1']);
+    $user->posts()->where('id','=',2)->update(['title'=>'course','body'=>'Laravel PHP']);
+
+
+});
+
+Route::get('/delete',function(){
+    $user= User::find(1);
+    $user->posts()->whereId(1)->delete();
+
+});
